@@ -145,6 +145,7 @@
       color: #fff;
       text-decoration: none;
       cursor: pointer;
+      user-select: none;
     }
 
     .menu-item:hover {
@@ -290,7 +291,7 @@
     function scrollToSection(id) {
       var element = document.getElementById(id);
       var menuBarHeight = document.querySelector('.menu-container').offsetHeight;
-      var scrollPosition = element.offsetTop - menuBarHeight; // Adjust 20px for margin
+      var scrollPosition = element.offsetTop - menuBarHeight;
       window.scrollTo({ top: scrollPosition, behavior: 'smooth' });
     }
   </script>    
