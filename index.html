@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Image Background with Text Overlay</title>
+  <title>Horizontal Scroll Menu</title>
   <style>
     body {
       margin: 0;
@@ -91,21 +91,6 @@
     }
 
     /* footer */
-    /* The Modal (background) */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 1;
-      padding-top: 100px;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background-color: rgb(0, 0, 0);
-      background-color: rgba(0, 0, 0, 0.4);
-    }
-
     /* Modal Content */
     .modal-content {
       background-color: #fefefe;
@@ -118,29 +103,6 @@
       justify-content: center;
       gap: 4%;
       position: relative;
-    }
-
-    /* The Close Button */
-    .close {
-      color: #aaaaaa;
-      float: right;
-      font-size: 28px;
-      font-weight: bold;
-      position: absolute;
-      top: 2px;
-      right: 5px;
-    }
-
-    .close:hover,
-    .close:focus {
-      color: #000;
-      text-decoration: none;
-      cursor: pointer;
-    }
-
-    .socialIcons {
-      width: 30px;
-      height: 30px;
     }
 
     /* Sticky footer style */
@@ -157,10 +119,6 @@
       align-items: center;
     }
 
-    .footer .a2a-container {
-      display: none;
-      margin-right: 10px;
-    }
 
     button {
       background-color: #EE7371;
@@ -268,67 +226,27 @@
   <!-- Footer -->
   <div class="footer">
     <!-- Share button -->
-    <button id="myBtn">Share</button>
-    <a href="http://codetta.digital/contact-us" target="_blank">
+    <button id="shareButton">Share</button>
+    <a href="#" target="_blank">
       <button class="get-in-touch">Get in Touch</button>
     </a>
-
-    <div id="myModal" class="modal">
-      <div class="modal-content">
-        <span class="close">&times;</span>
-
-        <a href="https://www.facebook.com/"><img src="./Assets/facebook.jpg" class="socialIcons" alt="Facebook" /></a>
-        <a
-          href="https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fmail.google.com%2Fmail%2Fu%2F0%2F&emr=1&followup=https%3A%2F%2Fmail.google.com%2Fmail%2Fu%2F0%2F&ifkv=ATuJsjzmKk_ScPex2-rN1wePqewDV9m4nnFb6DkQjBIKmhV9mxcIpP5p0yx_B53Mn3A1wOalRccq&osid=1&passive=1209600&service=mail&flowName=GlifWebSignIn&flowEntry=ServiceLogin&dsh=S1795351095%3A1708485879145394&theme=glif"><img
-            src="./Assets/Gmail.jpg" class="socialIcons" alt="Gmail" /></a>
-        <a href="https://web.whatsapp.com/"><img src="./Assets/Whatsapp.jpg" class="socialIcons" alt="WhatsApp" /></a>
-        <a
-          href="https://login.yahoo.com/?.src=ym&pspid=159600001&activity=mail-direct&.lang=en-US&.intl=us&.done=https%3A%2F%2Fmail.yahoo.com%2Fd%2F"><img
-            src="./Assets/Email.jpg" class="socialIcons" alt="Email" /></a>
-        <a href="https://telegram.org/"><img src="./Assets/Telegram.jpg" class="socialIcons" alt="Telegram" /></a>
-        <a id="copyButton" href=""><img src="./Assets/Copy.jpg" class="socialIcons" alt="Copy" /></a>
-      </div>
-    </div>
   </div>
   </div>
   <script>
-    var modal = document.getElementById("myModal");
-    var btn = document.getElementById("myBtn");
-    var span = document.getElementsByClassName("close")[0];
-
-    btn.onclick = function () {
-      modal.style.display = "block";
+    const shareData = {
+        url: "https://bryantnorman.github.io/Novotel-Sample-1/",
     };
-
-    span.onclick = function () {
-      modal.style.display = "none";
-    };
-
-    window.onclick = function (event) {
-      if (event.target == modal) {
-        modal.style.display = "none";
-      }
-    };
-
-    document.getElementById("copyButton").addEventListener("click", function () {
-
-      var url = window.location.href;
-      var input = document.createElement("input");
-      input.style.position = "fixed";
-      input.style.opacity = 0;
-      input.value = url;
-
-      document.body.appendChild(input);
-
-      input.select();
-
-      document.execCommand("copy");
-
-      document.body.removeChild(input);
-
-      alert("URL copied to clipboard: " + url);
+    const btn = document.getElementById("shareButton");
+    btn.addEventListener("click", async () => {
+        try {
+            await navigator.share(shareData);
+            // resultPara.textContent = "Shared successfully";
+        }
+        catch (err) {
+            // resultPara.textContent = `Error: ${err}`;
+        }
     });
-  </script>
+</script>
 </body>
 
 </html>
