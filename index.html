@@ -289,9 +289,11 @@
   <script>
     function scrollToSection(id) {
       var element = document.getElementById(id);
-      element.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest", marginTop: 50 });
+      var menuBarHeight = document.querySelector('.menu-container').offsetHeight;
+      var scrollPosition = element.offsetTop - menuBarHeight + 10; // Adjust 20px for margin
+      window.scrollTo({ top: scrollPosition, behavior: 'smooth' });
     }
-  </script>  
+  </script>    
 </body>
 
 </html>
